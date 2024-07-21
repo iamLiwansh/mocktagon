@@ -61,7 +61,7 @@ function AddNewInterview() {
         .values({
           mockId: uuidv4(),
           jsonMockResp: MockJsonResp,
-          jobposition: jobPosition,
+          jobPosition: jobPosition,
           jobDesc: jobDesc,
           jobExperience: jobExperience,
           createdBy: user?.primaryEmailAddress?.emailAddress,
