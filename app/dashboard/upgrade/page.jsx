@@ -9,7 +9,7 @@ function Upgrade() {
     const router = useRouter();
 
     if (!user) {
-        return <div>Loading user information...</div>;
+        return <div className='text-center text-gray-500'>Loading user information...</div>;
     }
 
     const handleGetStarted = (link) => {
@@ -21,37 +21,43 @@ function Upgrade() {
     };
 
     return (
-        <div className='p-10'>
-            <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
+        <div className='bg-gray-100 py-16'>
+            <div className="mx-auto max-w-7xl px-6 sm:px-12 lg:px-16">
+                <h2 className="text-4xl font-extrabold text-center text-gray-900 mb-16">
+                    Choose Your Perfect Plan
+                </h2>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {PricingPlan.map((item, index) => (
-                        <div key={index} className="rounded-2xl border border-gray-200 p-6 shadow-sm sm:px-8 lg:p-12">
-                            <div className="text-center">
-                                <h2 className="text-lg font-medium text-gray-900">
+                        <div
+                            key={index}
+                            className="relative rounded-2xl border border-gray-300 bg-white p-8 shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-gray-50 opacity-10"></div>
+                            <div className="relative z-10 text-center">
+                                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                                     {item.name}
-                                    <span className="sr-only">Plan</span>
-                                </h2>
-
-                                <p className="mt-2 sm:mt-4">
-                                    <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">{item.price}$</strong>
-                                    <span className="text-sm font-medium text-gray-700">{item.name}</span>
+                                </h3>
+                                <p className="text-lg font-bold text-gray-800 mb-4">
+                                    <span className="text-4xl">{item.price}$</span>
+                                    <span className="text-sm font-medium text-gray-600">/{item.name}</span>
                                 </p>
+                                <ul className="space-y-2 text-left text-gray-700 mb-6">
+                                    {item.offering.map((offer, idx) => (
+                                        <li key={idx} className="flex items-center gap-2">
+                                            <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full ${offer.value.includes('✔') ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
+                                                {offer.value.includes('✔') ? '✔' : '❌'}
+                                            </span>
+                                            <span>{offer.value.replace(/✔|❌/g, '').trim()}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button
+                                    onClick={() => handleGetStarted(item.link)}
+                                    className="mt-4 w-full rounded-full bg-blue-500 px-6 py-3 text-white text-sm font-medium transition-transform transform hover:bg-blue-400 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                >
+                                    Get Started
+                                </button>
                             </div>
-
-                            <ul className="mt-6 space-y-2">
-                                {item.offering.map((offer, idx) => (
-                                    <li key={idx} className="flex items-center gap-1">
-                                        <span className="text-gray-700">{offer.value.replace(/✔|❌/g, '').trim()}</span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <button
-                                onClick={() => handleGetStarted(item.link)}
-                                className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                            >
-                                Get Started
-                            </button>
                         </div>
                     ))}
                 </div>

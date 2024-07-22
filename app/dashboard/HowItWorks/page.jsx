@@ -1,33 +1,22 @@
-'use client'; // Ensure this file is client-side
-
 import React from 'react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation'; // Import useRouter
-import Header from './dashboard/_components/Header';
-
 
 
 export default function Home() {
-  const router = useRouter(); // Get the router instance
-
-  const handleStart = () => {
-    router.push('/dashboard'); // Navigate to the dashboard
-  };
-
+  
   return (
     <>
-    <Header/>
       <section className="flex flex-col items-center justify-center space-y-4 pt-4 sm:pt-24 w-full bg-[url('/grid.svg')]" id="hero">
         <h1 className='text-4xl font-bold text-center tracking-tighter sm:text-5xl md:text-6xl leading-6'>
-          Create your forms <br /> in seconds, not hours
+          Prepare for your interviews <br /> in minutes, not days
         </h1>
         <p className='max-w-[600px] mt-4 text-center text-gray-500 md:text-xl'>
-          Generate, publish, and share your form right away with AI. Dive into insightful results, charts, and analytics.
+          Use AI to simulate real interview scenarios, receive instant feedback, and improve your skills efficiently.
         </p>
-        <Button onClick={handleStart}>Start</Button> {/* Attach the click handler */}
+        
         <div className='w-full bg-gradient-to-b from-transparent to-white h-24'></div>
       </section>
+
       <section className='flex flex-col items-center justify-center space-y-4 mt-12 pb-24' id="features">
         <h2 className='text-3xl font-bold text-center tracking-tighter sm:text-4xl md:text-5xl'>
           How It Works
@@ -48,7 +37,7 @@ export default function Home() {
               alt="arrow"
               className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2"
             />
-            <p>1. Add a job Role and describe the tech stack and tell Year of experience.</p>
+            <p>1. Add a job role, describe the tech stack, and provide years of experience.</p>
           </li>
           <li className='flex flex-col items-center space-y-4 relative'>
             <Image
@@ -65,7 +54,7 @@ export default function Home() {
               alt="arrow"
               className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 scale-x-[-1] rotate-180"
             />
-            <p>2. Generate the Interview and take it live</p>
+            <p>2. Generate the interview and take it live.</p>
           </li>
           <li className='flex flex-col items-center space-y-4 relative'>
             <Image
@@ -78,6 +67,27 @@ export default function Home() {
             <p>3. Check results, analytics, and more.</p>
           </li>
         </ul>
+      </section>
+
+      <section className='bg-[url("/grid.svg")] bg-cover bg-center py-16'>
+        <div className='max-w-4xl mx-auto px-4'>
+          <h2 className='text-3xl font-bold text-center text-white mb-6'>
+            Step-by-Step Method
+          </h2>
+          <div className='bg-white p-8 rounded-lg shadow-lg'>
+            <h3 className='text-2xl font-semibold mb-4'>
+              How to Use Moctagon
+            </h3>
+            <ol className='list-decimal list-inside space-y-4 text-lg text-gray-700'>
+              <li>Sign up for an account or log in if you already have one.</li>
+              <li>Select the type of interview you want to prepare for.</li>
+              <li>Customize your interview by adding relevant questions and scenarios.</li>
+              <li>Start your mock interview and practice with real-time feedback.</li>
+              <li>Review your performance, access detailed analytics, and improve your skills.</li>
+              <li>Share your mock interviews or results with mentors for additional feedback.</li>
+            </ol>
+          </div>
+        </div>
       </section>
     </>
   );
